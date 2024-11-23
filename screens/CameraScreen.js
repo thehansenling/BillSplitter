@@ -26,10 +26,7 @@ export default function CameraScreen({navigation}) {
 
   async function takePicture() {
      if (cameraRef) {
-     console.log(cameraRef)
-     console.log("YAYYY")
          picture = await cameraRef.current.takePictureAsync({ onPictureSaved: this.onPictureSaved });
-         console.log(picture)
          navigation.navigate('Bill');
      }
   };

@@ -20,17 +20,13 @@ export default function TaxItem({show, inputTax, updateCallback}){
     }
 
     function taxText(tax){
-        console.log(tax)
         temp_tax = parseFloat(tax)
-        console.log(temp_tax)
     }
 
 
     function save() {
         setTax(temp_tax)
         setIsModalVisible(!isModalVisible)
-        console.log("Tax")
-        console.log(temp_tax)
         updateCallback({index: -1, name: "Tax", price: temp_tax, filterOut:false})
     }
 

@@ -11,7 +11,6 @@ import {
 export default class BillItem extends React.Component{
     constructor(props) {
         super();
-        console.log(props)
         this.temp_name = ""
         this.temp_price = 0
         if (props.inputName == "")
@@ -91,7 +90,6 @@ export default class BillItem extends React.Component{
     }
     claimItem()
     {
-        console.log(this.props.index)
             var color = "red"
             if (this.state.claimed)
             {

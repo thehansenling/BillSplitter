@@ -26,7 +26,7 @@ export default function HomeScreen({props}){
   const Stack = createNativeStackNavigator();
 
   return (
-          <Stack.Navigator>
+          <Stack.Navigator >
             <Stack.Screen name="Camera" component={CameraScreen} />
             <Stack.Screen name="Bill" component={BillScreen} />
             <Stack.Screen name="Room" component={RoomScreen} />

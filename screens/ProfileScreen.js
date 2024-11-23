@@ -17,11 +17,8 @@ export default function ProfileScreen({props}){
     []);
 
     async function logout() {
-        console.log("LOGOUT")
         await supabase.auth.signOut();
         await supabase.auth.refreshSession();
-        console.log("LOGOUT")
-        console.log(props)
     }
 
   const Stack = createNativeStackNavigator();

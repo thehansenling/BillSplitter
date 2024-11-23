@@ -9,7 +9,6 @@ export default function LoginScreen() {
   const [loading, setLoading] = useState(false)
     async function getUsers() {
       const { data } = await supabase.from("users").select();
-      console.log(data)
     }
 
  async function signInWithEmail() {

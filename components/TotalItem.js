@@ -14,7 +14,6 @@ export default class Total extends React.Component{
     constructor(props)
     {
         super()
-        console.log("GETTING RENDERED")
     }
 
     render()

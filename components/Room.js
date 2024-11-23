@@ -22,8 +22,6 @@ export default class Room extends React.Component{
 
     onRoomPress()
     {
-        console.log("ROOM DATA")
-        console.log(this.name)
         this.navigation.push("Room",{bill_id:this.name})
     }
 

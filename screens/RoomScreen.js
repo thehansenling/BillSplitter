@@ -18,6 +18,7 @@ import {UserContext, useUser} from "../lib/context.js"
 
 export default function RoomScreen({route, navigation}) {
     const [items, setItems] = useState([])
+    const [billName, setBillName] = useState([])
     const user = useUser()
     const [username, setUsername] = useState(user.data.user.email)
     const billRef = useRef()
@@ -30,6 +31,13 @@ export default function RoomScreen({route, navigation}) {
 
     async function getData()
     {
+        var bill_data = await supabase
+          .from("items")
+          .select()
+          .eq("id", route.params.bill_id)
+
+
+
         var data = await supabase
           .from("items")
           .select()

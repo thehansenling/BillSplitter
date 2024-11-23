@@ -23,7 +23,6 @@ export default class ConfirmPaymentScreen extends React.Component {
         {
             items:props.items ? props.items : []
         }
-        console.log(props.navigation)
         this.total = props.route.params.total
         this.bill_username = props.route.params.username
         this.webViewRef = createRef();

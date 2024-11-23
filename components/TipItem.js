@@ -27,7 +27,6 @@ export default function TipItem({show, inputTip, updateCallback}){
     function save() {
         setTip(temp_tip)
         setIsModalVisible(!isModalVisible)
-        console.log(tip)
         updateCallback({index: -1, name: "Tip", price: temp_tip, filterOut:false})
     }
 

@@ -20,6 +20,7 @@ export default class Bill extends React.Component {
         super()
         this.state =
         {
+            billName: "Bill Name",
             items: [],
             total: 0,
             tax: 0,
@@ -31,6 +32,8 @@ export default class Bill extends React.Component {
         this.getUsername = this.getUsername.bind(this)
         this.updateItems = this.updateItems.bind(this)
         this.refreshTotal = this.refreshTotal.bind(this)
+        this.setBillName = this.setBillName.bind(this)
+        this.getBillName = this.getBillName.bind(this)
         if (props.items)
         {
             this.state = {
@@ -54,6 +57,12 @@ export default class Bill extends React.Component {
         this.props.updateItemsCallback(this.state.items)
 
     }
+    getBillName()
+    {
+        return this.state.billName
+    }
+
+
     getTotal()
     {
         return this.state.total
@@ -90,11 +99,8 @@ export default class Bill extends React.Component {
 
     updateItems(values)
     {
-    console.log("VALUES")
         var newArr = [...this.state.items]
         var newTotal = 0
-        console.log(values)
-        console.log(newArr)
         if (values.index != -1)
         {
             newArr[values.index].name = values.name
@@ -132,10 +138,7 @@ export default class Bill extends React.Component {
         {
             if (newArr[i].filterOut) continue
             newTotal += parseFloat(newArr[i].price)
-            console.log(parseFloat(newArr[i].price))
         }
-        console.log("NEW TOTAL")
-        console.log(newTotal)
         this.setState({
             total: newTotal
         })
@@ -147,10 +150,18 @@ export default class Bill extends React.Component {
         this.updateItems({index:-1, name:"Tip", price:this.state.tip, filterOut:false, username:""})
     }
 
+    setBillName(text)
+    {
+        this.setState({billName:text})
+    }
+
+
+
 
     render(){
     return (
         <View>
+            <TextInput placeholder="Bill Name" style = {{height:60, fontSize:30}} onChangeText = {(text)=>this.setBillName(text)}/>
             <FlatList keyboardShouldPersistTaps="always"
             keyboardDismissMode="on-drag"
             keyExtractor={(item, index) => item.key}

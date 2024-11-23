@@ -24,8 +24,10 @@ export default function Navigation({props}) {
     []);
   return (
     <UserProvider value="AHGHADFDS">
-        <NavigationContainer>
-            <Tab.Navigator>
+        <NavigationContainer >
+            <Tab.Navigator screenOptions={{
+                                          headerShown: false
+                                        }}>
               <Tab.Screen name="Home" component={HomeScreen} />
               <Tab.Screen name="Rooms" component={RoomsScreen} />
             </Tab.Navigator>
