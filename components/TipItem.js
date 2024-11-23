@@ -2,6 +2,7 @@ import { FlatList, StyleSheet, Text, View, Button, TextInput, ListItem, Pressabl
 import { useState, useEffect, useRef } from "react";
 import {supabase} from "../lib/supabase.js"
 import { createClient } from "@supabase/supabase-js";
+import { styles } from "../lib/styles.js"
 import {
   NavigationContainer,
   DefaultTheme,
@@ -58,49 +59,3 @@ export default function TipItem({show, inputTip, updateCallback}){
         </View>
         )
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-
-  },
-  itemText: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  leftBox: {
-    flex:1,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-  rightBox: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-  itemModal: {
-    position: 'fixed',
-    height:'80%',
-    width:'80%',
-    top:'10%',
-    left: '10%',
-    backgroundColor: 'white',
-    zValue:1000
-  },
-  modalContainer: {
-      position:"fixed",
-      height:"100%",
-      width:"100%",
-      backgroundColor:"rgba(0, 0, 0, 0.5)",
-  },
-  textInput: {
-    backgroundColor: "#cccccc",
-    borderStyle: "solid",
-    borderColor:"black",
-    borderWidth:1
-  },
-  closeButton: {
-    width:"30px",
-    height:"30px",
-    backgroundColor:"red"
-  }
-});

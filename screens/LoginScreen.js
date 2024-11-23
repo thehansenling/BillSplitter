@@ -1,6 +1,7 @@
 import { FlatList, StyleSheet, Text, View, Button, TextInput, Alert } from 'react-native';
 import { useState, useEffect } from "react";
 import {supabase} from "../lib/supabase.js"
+import { styles } from "../lib/styles.js"
 import { createClient } from "@supabase/supabase-js";
 
 export default function LoginScreen() {
@@ -39,7 +40,7 @@ export default function LoginScreen() {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={styles.login_container}>
       <View style={[styles.verticallySpaced, styles.mt20]}>
         <TextInput
           label="Email"
@@ -71,17 +72,3 @@ export default function LoginScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 40,
-    padding: 12,
-  },
-  verticallySpaced: {
-    paddingTop: 4,
-    paddingBottom: 4,
-    alignSelf: 'stretch',
-  },
-  mt20: {
-    marginTop: 20,
-  },
-})

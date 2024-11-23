@@ -2,6 +2,7 @@ import { FlatList, StyleSheet, Text, View, Button, TextInput, ListItem, Pressabl
 import  React, { useState, useEffect, useRef, Component } from "react";
 import {supabase} from "../lib/supabase.js"
 import { createClient } from "@supabase/supabase-js";
+import { styles } from "../lib/styles.js"
 import {
   NavigationContainer,
   DefaultTheme,
@@ -31,23 +32,3 @@ export default class Total extends React.Component{
              )
     }
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-
-  },
-    itemText: {
-      fontSize: 20,
-      fontWeight: 'bold',
-    },
-  leftBox: {
-    flex:1,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-  rightBox: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
- })

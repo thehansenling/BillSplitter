@@ -3,6 +3,7 @@ import React, { Component, useState, useEffect, useRef, useContext } from "react
 import {supabase} from "../lib/supabase.js"
 import { createClient } from "@supabase/supabase-js";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import {styles} from "../lib/styles.js"
 import {
   NavigationContainer,
   DefaultTheme,
@@ -197,25 +198,3 @@ export default class Bill extends React.Component {
         )
         }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-
-  },
-    itemText: {
-      fontSize: 20,
-      fontWeight: 'bold',
-    },
-  leftBox: {
-    flex:1,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-  rightBox: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
- })
-
-

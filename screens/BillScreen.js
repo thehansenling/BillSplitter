@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import 'react-native-get-random-values';
 import {UserContext, useUser} from "../lib/context.js"
 import { v4 as uuid } from "uuid";
+import { styles } from "../lib/styles.js"
 import {
   NavigationContainer,
   DefaultTheme,
@@ -69,25 +70,3 @@ export default function BillScreen({navigation}){
            </View>
 
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-
-  },
-    itemText: {
-      fontSize: 20,
-      fontWeight: 'bold',
-    },
-  leftBox: {
-    flex:1,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-  rightBox: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
- })
-
-
