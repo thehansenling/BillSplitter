@@ -19,6 +19,7 @@ export default class Bill extends React.Component {
     constructor(props)
     {
         super()
+
         this.state =
         {
             billName: "Bill Name",
@@ -56,13 +57,12 @@ export default class Bill extends React.Component {
         this.props = props
         this.username = props.username
         this.props.updateItemsCallback(this.state.items)
-
     }
+
     getBillName()
     {
         return this.state.billName
     }
-
 
     getTotal()
     {
@@ -83,7 +83,6 @@ export default class Bill extends React.Component {
 
         this.refreshTotal()
     }
-
 
     addItem()
     {
@@ -153,16 +152,17 @@ export default class Bill extends React.Component {
 
     setBillName(text)
     {
+        console.log("SETTING BILL NAME")
         this.setState({billName:text})
     }
-
-
-
 
     render(){
     return (
         <View>
-            <TextInput placeholder="Bill Name" style = {{height:60, fontSize:30}} onChangeText = {(text)=>this.setBillName(text)}/>
+            {
+            this.props.show ? <TextInput placeholder="Bill Name" style = {styles.itemText} onChangeText = {(text)=>this.setBillName(text)}/> :
+            <Text style={styles.itemText}>{this.state.billName}</Text>
+            }
             <FlatList keyboardShouldPersistTaps="always"
             keyboardDismissMode="on-drag"
             keyExtractor={(item, index) => item.key}

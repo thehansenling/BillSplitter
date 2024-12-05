@@ -57,8 +57,6 @@ export default function BillScreen({navigation}){
         {
             console.log("Error uploading bill itself")
         }
-
-
         navigation.navigate('Rooms');
     }
 

@@ -22,8 +22,13 @@ function Rooms({navigation}){
         async function getbills()
         {
 
+//            var data = await supabase
+//              .rpc('get_distinct_bills')
+//
             var data = await supabase
-              .rpc('get_distinct_bills')
+              .from("bills")
+              .select()
+            console.log(data)
             var data_rooms = []
             for (i in data.data)
             {

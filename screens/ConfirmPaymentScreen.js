@@ -26,9 +26,11 @@ export default class ConfirmPaymentScreen extends React.Component {
         }
         this.total = props.route.params.total
         this.bill_username = props.route.params.username
+        this.billName = props.route.params.billName
         this.webViewRef = createRef();
         this.amount = 2
-        this.jsCode = "document.getElementsByClassName('MuiInputBase-input css-mnn31')[0].value= " +this.total +"; document.getElementById('search-input').value = '" + this.bill_username + "';"
+        console.log(this.billName)
+        this.jsCode = "document.getElementsByClassName('MuiInputBase-input css-mnn31')[0].value= " +this.total +"; document.getElementById('search-input').value = '" + this.bill_username + "'; document.getElementsByClassName('MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline MuiInputBase-inputAdornedEnd css-qm8ja9')[0].value='" + this.billName + "'"
         this.confirmPayment = this.confirmPayment.bind(this)
     }
     //var button = '<div id="paypal-button-container"></div>  <script src="https://www.paypal.com/sdk/js?client-id=' + token + '&enable-funding=venmo&buyer-country=US&currency=USD&components=buttons"></script> <script> paypal.Buttons().render(\'#paypal-button-container\')</script>'
@@ -52,7 +54,6 @@ export default class ConfirmPaymentScreen extends React.Component {
                    ref={this.webViewRef}
                    javaScriptEnabled = {true}
                    source={{ uri: 'https://account.venmo.com/pay' }}
-                   injectedJavaScript={this.jsCode}
                   />
                <Button onPress = {this.confirmPayment} title="Fill In"/>
 

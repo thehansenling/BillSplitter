@@ -15,11 +15,9 @@ import Room from "../components/Room.js"
 import Bill from "../components/Bill.js"
 import {UserContext, useUser} from "../lib/context.js"
 
-
-
 export default function RoomScreen({route, navigation}) {
     const [items, setItems] = useState([])
-    const [billName, setBillName] = useState([])
+    const [billName, setBillName] = useState("DEFAULT BILL NAME")
     const user = useUser()
     const [username, setUsername] = useState(user.data.user.email)
     const billRef = useRef()
@@ -35,14 +33,13 @@ export default function RoomScreen({route, navigation}) {
           .select()
           .eq("id", route.params.bill_id)
 
-
-
         var data = await supabase
           .from("items")
           .select()
           .eq("bill_id", route.params.bill_id)
         setItems(data.data)
         billRef.current.manualUpdate(data.data)
+        billRef.current.setBillName(bill_data.data[0].name)
     }
 
       useFocusEffect(
@@ -61,7 +58,6 @@ export default function RoomScreen({route, navigation}) {
               .from("items")
               .select()
               .eq("bill_id", route.params.bill_id)
-            console.log(data)
             setItems(data.data)
         }
         getData()
@@ -79,12 +75,12 @@ export default function RoomScreen({route, navigation}) {
                 userItems.push(items[i])
             }
         }
-        navigation.navigate('ConfirmPayment', {total:billRef.current.getTotal(), username: billRef.current.getUsername()});
+        navigation.navigate('ConfirmPayment', {total:billRef.current.getTotal(), billName:billRef.current.getBillName(), username: billRef.current.getUsername()});
     }
 
         return <View>
                     <View style = {{width: '100%', height: '95%'}}>
-                       <Bill ref = {billRef} items = {items} updateItemsCallback= {updateItems} username = {username} show={true}/>
+                       <Bill ref = {billRef} items = {items} updateItemsCallback= {updateItems} username = {username} show={false}/>
                     </View>
                     <Button style = {{ flex: 1, justifyContent: 'flex-end'}}title="Confirm Payment" onPress={confirmPayment}> </Button>
                 </View>
