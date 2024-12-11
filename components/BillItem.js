@@ -91,11 +91,18 @@ export default class BillItem extends React.Component{
     }
     claimItem()
     {
+            if (this.props.show)
+            {
+                return;
+            }
+
             var color = "red"
             if (this.state.claimed)
             {
                 color = "white"
             }
+            console.log("INDEX THING")
+            console.log(this.props)
             this.setState({
                 index:this.props.index,
                 isModalVisible: this.state.isModalVisible,

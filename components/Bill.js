@@ -75,10 +75,7 @@ export default class Bill extends React.Component {
     manualUpdate(inputItems)
     {
         this.setState({
-                      items:inputItems,
-                      total: this.state.total,
-                      tax: this.state.tax,
-                      tip: this.state.tip
+                      items:inputItems
                   })
 
         this.refreshTotal()
@@ -88,26 +85,29 @@ export default class Bill extends React.Component {
     {
         var newArr = [...this.state.items];
         newArr.push({name:"", price:0, index:this.state.items.length})
+
         this.setState({
             items:newArr,
-            total: this.state.total,
-            tax: this.state.tax,
-            tip: this.state.tip
         })
         this.props.updateItemsCallback(newArr)
     }
 
     updateItems(values)
     {
+        console.log("ADHGLASNGL")
         var newArr = [...this.state.items]
         var newTotal = 0
         if (values.index != -1)
         {
+            console.log("ADHGLASNGL2222")
+            console.log(newArr)
+            console.log(values)
             newArr[values.index].name = values.name
             newArr[values.index].price = values.price
             newArr[values.index].filterOut = values.filterOut
             newArr[values.index].username = values.username
             newTotal += this.state.tax + this.state.tip
+            console.log("ADHGLASNGL33333")
             this.setState({
                 items:newArr
             })
@@ -175,25 +175,27 @@ export default class Bill extends React.Component {
                     }
                     else if (i.item.index == -2)
                     {
-                             return <View>
-                               <Button title="Add" onPress={this.addItem}/>
-                               <TaxItem updateCallback = {this.updateItems} show = {this.props.show}/>
-                               <TipItem updateCallback = {this.updateItems} show = {this.props.show}/>
-                              <View style = {styles.container}>
-                                   <View style = {styles.leftBox} >
-                                       <Text style= {styles.itemText}> Total </Text>
-                                   </View>
-                                   <View style = {styles.rightBox}>
-                                       <Text style= {[styles.itemText, {paddingRight:10}]}> {this.state.total} </Text>
-                                   </View>
-                               </View>
-                           </View>
+                             return
                     }
+                    console.log("WHAT SDKLT WEIJHKT");
+                    console.log(i);
                     return <BillItem username = {this.username} style = {{zIndex:1000}}inputName={i.item.name} inputPrice={i.item.price} updateCallback={this.updateItems} index = {i.item.index} show={this.props.show}/>}}
                     >
 
             </FlatList>
-
+            <View>
+               <Button title="Add" onPress={this.addItem}/>
+               <TaxItem updateCallback = {this.updateItems} show = {this.props.show}/>
+               <TipItem updateCallback = {this.updateItems} show = {this.props.show}/>
+              <View style = {styles.container}>
+                   <View style = {styles.leftBox} >
+                       <Text style= {styles.itemText}> Total </Text>
+                   </View>
+                   <View style = {styles.rightBox}>
+                       <Text style= {[styles.itemText, {paddingRight:10}]}> {this.state.total} </Text>
+                   </View>
+               </View>
+           </View>
         </View>
         )
         }

@@ -32,8 +32,10 @@ function Rooms({navigation}){
             var data_rooms = []
             for (i in data.data)
             {
-                data_rooms.push({name:data.data[i]})
+                data_rooms.push(data.data[i])
             }
+            console.log("SDLGKNSDKLOGN")
+            console.log(data_rooms)
             setRooms(data_rooms)
             setIsLoaded(true)
         }
@@ -45,12 +47,11 @@ function Rooms({navigation}){
                 <FlatList data = {rooms}
                     renderItem = {(i) =>
                        {
-                            return <Room name={i.item.name} navigation={navigation}/>
+                            console.log("ROOM STUFF")
+                            console.log(i)
+                            return <Room name={i.item.name} bill_id={i.item.id} navigation={navigation}/>
                        }
                 }/>
-
-                <Button title = "HEy"/>
-
            </View>
 
 }

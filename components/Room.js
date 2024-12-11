@@ -16,6 +16,8 @@ export default class Room extends React.Component{
         super()
         console.log(props)
         this.name = props.name
+
+        this.bill_id = props.bill_id
         this.onRoomPress = this.onRoomPress.bind(this)
         this.navigation = props.navigation
         this.state = {isFocused:true}
@@ -23,7 +25,7 @@ export default class Room extends React.Component{
 
     onRoomPress()
     {
-        this.navigation.push("Room",{bill_id:this.name})
+        this.navigation.push("Room",{bill_id:this.bill_id})
     }
 
     render()

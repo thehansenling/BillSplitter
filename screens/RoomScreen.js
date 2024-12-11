@@ -29,7 +29,7 @@ export default function RoomScreen({route, navigation}) {
     async function getData()
     {
         var bill_data = await supabase
-          .from("items")
+          .from("bills")
           .select()
           .eq("id", route.params.bill_id)
 
@@ -38,6 +38,11 @@ export default function RoomScreen({route, navigation}) {
           .select()
           .eq("bill_id", route.params.bill_id)
         setItems(data.data)
+        console.log("EYY DATA")
+        console.log(route.params)
+        console.log(data)
+
+        console.log(bill_data)
         billRef.current.manualUpdate(data.data)
         billRef.current.setBillName(bill_data.data[0].name)
     }
